@@ -21,6 +21,7 @@
   "stars": 9800,
   "tags": ["database", "postgres", "sql", "analytics", "data", "schema", "relational"],
   "icon": "database",
+  "logoUrl": "https://cdn.simpleicons.org/postgresql/4169e1",
   "hosting": "local",
   "envVars": [
     {

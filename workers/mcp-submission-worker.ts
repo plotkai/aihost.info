@@ -65,6 +65,7 @@ export default {
           verified: false,
           stars: 0,
           tags: body.tags || [],
+          logoUrl: body.logoUrl || undefined,
           hosting: body.hosting || 'local',
           envVars: body.envVars || [],
           tools: body.tools || [],

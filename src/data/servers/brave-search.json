@@ -22,6 +22,7 @@
   "stars": 8400,
   "tags": ["search", "web-search", "brave", "live-data", "research", "privacy", "knowledge"],
   "icon": "search",
+  "logoUrl": "https://cdn.simpleicons.org/brave/fb542b",
   "hosting": "cloud",
   "envVars": [
     {

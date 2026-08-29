@@ -98,6 +98,7 @@ export interface McpServer {
   stars?: number;
   tags: string[];
   icon?: string;
+  logoUrl?: string;
   hosting: HostingType;
   envVars: EnvVarDefinition[];
   tools: ToolDefinition[];
@@ -149,6 +150,7 @@ export interface SubmissionPayload {
   args: string[];
   envVars: EnvVarDefinition[];
   tools: ToolDefinition[];
+  logoUrl?: string;
   submitterEmail?: string;
   notes?: string;
 }

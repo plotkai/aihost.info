@@ -17,6 +17,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
   const [region, setRegion] = useState<RegionType>('Global');
   const [company, setCompany] = useState('');
   const [author, setAuthor] = useState('');
+  const [logoUrl, setLogoUrl] = useState('');
   const [repositoryUrl, setRepositoryUrl] = useState('');
   const [homepageUrl, setHomepageUrl] = useState('');
   const [shortDescription, setShortDescription] = useState('');
@@ -118,6 +119,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
     verified: false,
     stars: 0,
     tags: parsedTags.length > 0 ? parsedTags : ['mcp', 'tools'],
+    logoUrl: logoUrl.trim() || undefined,
     hosting,
     envVars: filteredEnv,
     tools: filteredTools,
@@ -299,6 +301,32 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                   onChange={(e) => setRepositoryUrl(e.target.value)}
                   className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
                 />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs text-slate-700 dark:text-slate-300 font-medium flex items-center justify-between">
+                <span>Logo / Icon Image URL (optional)</span>
+                <span className="text-[10px] text-slate-500">Direct PNG, SVG, or WebP link</span>
+              </label>
+              <div className="flex items-center gap-3">
+                <input
+                  type="url"
+                  placeholder="https://raw.githubusercontent.com/.../logo.svg"
+                  value={logoUrl}
+                  onChange={(e) => setLogoUrl(e.target.value)}
+                  className="flex-1 px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
+                />
+                {logoUrl && (
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm">
+                    <img
+                      src={logoUrl}
+                      alt="Logo preview"
+                      className="w-full h-full object-contain p-1.5"
+                      onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

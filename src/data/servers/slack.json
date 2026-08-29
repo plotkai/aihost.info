@@ -21,6 +21,7 @@
   "stars": 6700,
   "tags": ["slack", "chat", "messaging", "collaboration", "channels", "bots", "communication"],
   "icon": "message-square",
+  "logoUrl": "https://cdn.simpleicons.org/slack/4a154b",
   "hosting": "cloud",
   "envVars": [
     {

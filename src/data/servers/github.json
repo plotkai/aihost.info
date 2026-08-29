@@ -22,6 +22,7 @@
   "stars": 12500,
   "tags": ["git", "github", "issues", "pull-requests", "code-search", "version-control", "collaboration"],
   "icon": "github",
+  "logoUrl": "https://cdn.simpleicons.org/github",
   "hosting": "local",
   "envVars": [
     {

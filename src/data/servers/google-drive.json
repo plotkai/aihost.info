@@ -21,6 +21,7 @@
   "stars": 7900,
   "tags": ["google", "google-drive", "docs", "sheets", "cloud-storage", "productivity", "workspace"],
   "icon": "cloud",
+  "logoUrl": "https://cdn.simpleicons.org/googledrive/4285f4",
   "hosting": "cloud",
   "envVars": [
     {

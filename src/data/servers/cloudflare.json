@@ -22,6 +22,7 @@
   "stars": 4900,
   "tags": ["cloudflare", "workers", "d1", "kv", "serverless", "edge", "dns", "cdn"],
   "icon": "cloud",
+  "logoUrl": "https://cdn.simpleicons.org/cloudflare/f38020",
   "hosting": "hybrid",
   "envVars": [
     {

@@ -15,6 +15,7 @@ export const ServerCard: React.FC<ServerCardProps> = ({
   onOpenWaitlist,
 }) => {
   const [copiedClient, setCopiedClient] = useState<string | null>(null);
+  const [imgError, setImgError] = useState(false);
 
   const handleCopyConfig = (e: React.MouseEvent, client: 'claude' | 'cursor' | 'antigravity') => {
     e.stopPropagation();
@@ -23,6 +24,8 @@ export const ServerCard: React.FC<ServerCardProps> = ({
     setCopiedClient(client);
     setTimeout(() => setCopiedClient(null), 2000);
   };
+
+  const logo = server.logoUrl || (server.icon && (server.icon.startsWith('http') || server.icon.startsWith('/')) ? server.icon : undefined);
 
   return (
     <div
@@ -33,9 +36,18 @@ export const ServerCard: React.FC<ServerCardProps> = ({
       <div>
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-3">
-            {/* Server Avatar / Icon */}
-            <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-brand-600 dark:text-brand-400 font-mono font-bold text-base shadow-sm dark:shadow-md group-hover:border-brand-500/50 group-hover:scale-105 transition-all">
-              {server.name.charAt(0)}
+            {/* Server Avatar / Icon / Logo */}
+            <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-brand-600 dark:text-brand-400 font-mono font-bold text-base shadow-sm dark:shadow-md group-hover:border-brand-500/50 group-hover:scale-105 transition-all overflow-hidden flex-shrink-0">
+              {logo && !imgError ? (
+                <img
+                  src={logo}
+                  alt={server.name}
+                  onError={() => setImgError(true)}
+                  className="w-full h-full object-contain p-1.5"
+                />
+              ) : (
+                server.name.charAt(0)
+              )}
             </div>
 
             <div>
@@ -123,7 +135,7 @@ export const ServerCard: React.FC<ServerCardProps> = ({
               </>
             ) : (
               <>
-                <Copy className="w-3 h-3 text-slate-400" />
+                <Copy className="w-3.5 h-3.5 text-slate-400" />
                 <span>Config</span>
               </>
             )}

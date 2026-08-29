@@ -44,6 +44,9 @@ export const ServerDetail: React.FC<ServerDetailProps> = ({
     { id: 'cline', name: 'Cline / Roo Code' },
   ];
 
+  const [imgError, setImgError] = useState(false);
+  const logo = server.logoUrl || (server.icon && (server.icon.startsWith('http') || server.icon.startsWith('/')) ? server.icon : undefined);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumbs & Back */}
@@ -70,9 +73,18 @@ export const ServerDetail: React.FC<ServerDetailProps> = ({
       <div className="glass-panel p-6 sm:p-8 rounded-2xl mb-8 relative overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
           <div className="flex items-start gap-4">
-            {/* Avatar Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-brand-600 dark:text-brand-400 font-mono font-bold text-2xl shadow-sm dark:shadow-xl flex-shrink-0">
-              {server.name.charAt(0)}
+            {/* Avatar Icon / Logo */}
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-brand-600 dark:text-brand-400 font-mono font-bold text-2xl shadow-sm dark:shadow-xl flex-shrink-0 overflow-hidden">
+              {logo && !imgError ? (
+                <img
+                  src={logo}
+                  alt={server.name}
+                  onError={() => setImgError(true)}
+                  className="w-full h-full object-contain p-2"
+                />
+              ) : (
+                server.name.charAt(0)
+              )}
             </div>
 
             <div>

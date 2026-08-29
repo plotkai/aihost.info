@@ -22,6 +22,7 @@
   "stars": 6200,
   "tags": ["supabase", "postgres", "auth", "storage", "edge-functions", "backend-as-a-service", "rls"],
   "icon": "database",
+  "logoUrl": "https://cdn.simpleicons.org/supabase/3ecf8e",
   "hosting": "hybrid",
   "envVars": [
     {

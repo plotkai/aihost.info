@@ -20,6 +20,7 @@
   "stars": 5800,
   "tags": ["docker", "containers", "devops", "logs", "docker-compose", "infrastructure"],
   "icon": "container",
+  "logoUrl": "https://cdn.simpleicons.org/docker/2496ed",
   "hosting": "local",
   "envVars": [
     {
