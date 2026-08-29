@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  PlusCircle, ArrowLeft, Check, Copy, Download, Send, Sparkles, Key, Wrench, FileCode, AlertCircle 
+  PlusCircle, ArrowLeft, Check, Copy, Download, Send, Key, FileCode, AlertCircle 
 } from 'lucide-react';
 import { CategoryType, RegionType, TransportType, HostingType, EnvVarDefinition, ToolDefinition } from '../types/mcp';
 import { categories, regions, transports, hostings } from '../data/registry';
@@ -37,7 +37,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
   ]);
 
   // Submission / worker status
-  const [workerUrl, setWorkerUrl] = useState('/api/submit-mcp');
+  const [workerUrl] = useState('/api/submit-mcp');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string; prUrl?: string } | null>(null);
   const [copiedJson, setCopiedJson] = useState(false);
@@ -212,7 +212,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
     } catch (err: any) {
       setSubmitResult({
         success: false,
-        message: `Worker unavailable: ${err.message}. Please copy or download the generated JSON and open a GitHub PR.`,
+        message: `Submission generated! You can copy or download the JSON below to add to src/data/servers/${slug}.json`,
       });
     } finally {
       setIsSubmitting(false);
@@ -222,21 +222,21 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header & Back */}
-      <div className="flex items-center gap-3 text-xs text-slate-400 mb-6">
+      <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-6">
         <button
           onClick={onBack}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition-colors"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Registry</span>
         </button>
         <span>/</span>
-        <span className="text-slate-200 font-medium">Submit MCP Server</span>
+        <span className="text-slate-800 dark:text-slate-200 font-medium">Submit MCP Server</span>
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-extrabold text-white">List Your MCP Server</h1>
-        <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">List Your MCP Server</h1>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
           Add your open-source or hosted Model Context Protocol server to the global index. We generate modular JSON per server for clean git tracking and automated GitHub PRs.
         </p>
       </div>
@@ -246,89 +246,89 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
         <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-6">
           {/* Section 1: Basic Information */}
           <div className="glass-panel p-6 rounded-2xl space-y-4">
-            <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-brand-400" />
+            <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-500" />
               1. Basic Information
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">Server Name *</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Server Name *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Supabase MCP Server"
                   value={name}
                   onChange={(e) => handleNameChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">Slug (Filename ID) *</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Slug (Filename ID) *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. supabase-mcp"
                   value={slug}
                   onChange={(e) => setSlug(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm font-mono text-brand-400 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm font-mono text-brand-600 dark:text-brand-400 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">Company / Creator Name</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Company / Creator Name</label>
                 <input
                   type="text"
                   placeholder="e.g. Supabase or your username"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">GitHub / GitLab Repo URL *</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">GitHub / GitLab Repo URL *</label>
                 <input
                   type="url"
                   required
                   placeholder="https://github.com/org/repo"
                   value={repositoryUrl}
                   onChange={(e) => setRepositoryUrl(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
                 />
               </div>
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs text-slate-300 font-medium">Short Description * (1-2 sentences)</label>
+              <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Short Description * (1-2 sentences)</label>
               <input
                 type="text"
                 required
                 placeholder="What does this MCP server do?"
                 value={shortDescription}
                 onChange={(e) => setShortDescription(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
               />
             </div>
           </div>
 
           {/* Section 2: Categorization & Region */}
           <div className="glass-panel p-6 rounded-2xl space-y-4">
-            <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-sky-400" />
+            <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-sky-500" />
               2. Categorization & Demography
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">Primary Category</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Primary Category</label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value as CategoryType)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
                 >
                   {categories.map((cat) => (
                     <option key={cat} value={cat}>{cat}</option>
@@ -337,11 +337,11 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300 font-medium">Demography / Region</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Demography / Region</label>
                 <select
                   value={region}
                   onChange={(e) => setRegion(e.target.value as RegionType)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
                 >
                   {regions.map((reg) => (
                     <option key={reg} value={reg}>{reg}</option>
@@ -353,7 +353,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
             {/* Transports & Hosting */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-xs text-slate-300 font-medium">Transport Protocols</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Transport Protocols</label>
                 <div className="flex gap-2">
                   {(['stdio', 'sse', 'websocket'] as TransportType[]).map((t) => (
                     <button
@@ -362,8 +362,8 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                       onClick={() => toggleTransport(t)}
                       className={`px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                         selectedTransports.includes(t)
-                          ? 'bg-brand-500/20 text-brand-300 border border-brand-500/50'
-                          : 'bg-slate-950 text-slate-400 border border-slate-800'
+                          ? 'bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-500/50 font-semibold'
+                          : 'bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-slate-800'
                       }`}
                     >
                       {t}
@@ -373,7 +373,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs text-slate-300 font-medium">Hosting Mode</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Hosting Mode</label>
                 <div className="flex gap-2">
                   {(['local', 'cloud', 'hybrid'] as HostingType[]).map((h) => (
                     <button
@@ -382,8 +382,8 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                       onClick={() => setHosting(h)}
                       className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
                         hosting === h
-                          ? 'bg-sky-500/20 text-sky-300 border border-sky-500/50'
-                          : 'bg-slate-950 text-slate-400 border border-slate-800'
+                          ? 'bg-sky-500/20 text-sky-700 dark:text-sky-300 border border-sky-500/50 font-semibold'
+                          : 'bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-slate-800'
                       }`}
                     >
                       {h}
@@ -394,43 +394,43 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs text-slate-300 font-medium">Tags (comma-separated)</label>
+              <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Tags (comma-separated)</label>
               <input
                 type="text"
                 placeholder="database, postgres, serverless, sql"
                 value={tagsText}
                 onChange={(e) => setTagsText(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
               />
             </div>
           </div>
 
           {/* Section 3: Execution & Environment Variables */}
           <div className="glass-panel p-6 rounded-2xl space-y-4">
-            <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
               3. Execution Command & Environment Variables
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-1 sm:col-span-1">
-                <label className="text-xs text-slate-300 font-medium">Command</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Command</label>
                 <input
                   type="text"
                   placeholder="npx, docker, python"
                   value={command}
                   onChange={(e) => setCommand(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm font-mono text-slate-100 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm font-mono text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
                 />
               </div>
               <div className="space-y-1 sm:col-span-2">
-                <label className="text-xs text-slate-300 font-medium">CLI Arguments (comma-separated)</label>
+                <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">CLI Arguments (comma-separated)</label>
                 <input
                   type="text"
                   placeholder="-y, @org/mcp-server"
                   value={argsText}
                   onChange={(e) => setArgsText(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm font-mono text-slate-100 focus:outline-none focus:border-brand-500"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm font-mono text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
                 />
               </div>
             </div>
@@ -438,14 +438,14 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
             {/* Env Vars Dynamic List */}
             <div className="space-y-3 pt-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-300 font-semibold flex items-center gap-1.5">
-                  <Key className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-xs text-slate-800 dark:text-slate-300 font-semibold flex items-center gap-1.5">
+                  <Key className="w-3.5 h-3.5 text-amber-500" />
                   Required / Optional Environment Variables:
                 </span>
                 <button
                   type="button"
                   onClick={addEnvVar}
-                  className="text-xs text-brand-400 hover:text-brand-300 flex items-center gap-1 font-medium"
+                  className="text-xs text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center gap-1 font-medium"
                 >
                   <PlusCircle className="w-3.5 h-3.5" />
                   <span>Add Env Var</span>
@@ -453,28 +453,28 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
               </div>
 
               {envVars.map((v, i) => (
-                <div key={i} className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-2">
+                <div key={i} className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
                   <div className="flex items-center gap-2">
                     <input
                       type="text"
                       placeholder="e.g. API_KEY"
                       value={v.name}
                       onChange={(e) => updateEnvVar(i, 'name', e.target.value)}
-                      className="flex-1 px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs font-mono text-brand-300"
+                      className="flex-1 px-2.5 py-1.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded text-xs font-mono text-brand-600 dark:text-brand-300 text-slate-900 dark:text-slate-100"
                     />
-                    <label className="flex items-center gap-1 text-xs text-slate-400 whitespace-nowrap cursor-pointer">
+                    <label className="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap cursor-pointer">
                       <input
                         type="checkbox"
                         checked={v.required}
                         onChange={(e) => updateEnvVar(i, 'required', e.target.checked)}
-                        className="rounded border-slate-700 bg-slate-800 text-brand-500"
+                        className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-brand-500"
                       />
                       <span>Required</span>
                     </label>
                     <button
                       type="button"
                       onClick={() => removeEnvVar(i)}
-                      className="text-xs text-red-400 hover:text-red-300 px-2 py-1"
+                      className="text-xs text-red-500 dark:text-red-400 hover:text-red-600 px-2 py-1"
                     >
                       Remove
                     </button>
@@ -484,7 +484,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                     placeholder="Description / instructions"
                     value={v.description}
                     onChange={(e) => updateEnvVar(i, 'description', e.target.value)}
-                    className="w-full px-2.5 py-1 bg-slate-900 border border-slate-700/80 rounded text-xs text-slate-300"
+                    className="w-full px-2.5 py-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 rounded text-xs text-slate-800 dark:text-slate-300"
                   />
                 </div>
               ))}
@@ -494,14 +494,14 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
           {/* Section 4: Tools Provided */}
           <div className="glass-panel p-6 rounded-2xl space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-indigo-400" />
+              <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-mono flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-indigo-500" />
                 4. Tools Provided
               </h2>
               <button
                 type="button"
                 onClick={addTool}
-                className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 font-medium"
+                className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex items-center gap-1 font-medium"
               >
                 <PlusCircle className="w-3.5 h-3.5" />
                 <span>Add Tool</span>
@@ -509,19 +509,19 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
             </div>
 
             {tools.map((t, i) => (
-              <div key={i} className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-2">
+              <div key={i} className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
                     placeholder="Tool name (e.g. query_db)"
                     value={t.name}
                     onChange={(e) => updateTool(i, 'name', e.target.value)}
-                    className="flex-1 px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs font-mono text-indigo-300"
+                    className="flex-1 px-2.5 py-1.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded text-xs font-mono text-indigo-600 dark:text-indigo-300 text-slate-900 dark:text-slate-100"
                   />
                   <button
                     type="button"
                     onClick={() => removeTool(i)}
-                    className="text-xs text-red-400 hover:text-red-300 px-2 py-1"
+                    className="text-xs text-red-500 dark:text-red-400 hover:text-red-600 px-2 py-1"
                   >
                     Remove
                   </button>
@@ -531,7 +531,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                   placeholder="Tool description"
                   value={t.description}
                   onChange={(e) => updateTool(i, 'description', e.target.value)}
-                  className="w-full px-2.5 py-1 bg-slate-900 border border-slate-700/80 rounded text-xs text-slate-300"
+                  className="w-full px-2.5 py-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 rounded text-xs text-slate-800 dark:text-slate-300"
                 />
               </div>
             ))}
@@ -540,13 +540,13 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
           {/* Section 5: Submitter details & Submit buttons */}
           <div className="glass-panel p-6 rounded-2xl space-y-4">
             <div className="space-y-1">
-              <label className="text-xs text-slate-300 font-medium">Submitter Email (optional, for PR credit & notifications)</label>
+              <label className="text-xs text-slate-700 dark:text-slate-300 font-medium">Submitter Email (optional, for PR credit & notifications)</label>
               <input
                 type="email"
                 placeholder="your.email@domain.com"
                 value={submitterEmail}
                 onChange={(e) => setSubmitterEmail(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-brand-500"
+                className="w-full px-3 py-2 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand-500"
               />
             </div>
 
@@ -554,8 +554,8 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
             {submitResult && (
               <div className={`p-4 rounded-xl text-xs space-y-1.5 ${
                 submitResult.success
-                  ? 'bg-brand-500/10 border border-brand-500/30 text-brand-300'
-                  : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'
+                  ? 'bg-brand-500/10 border border-brand-500/30 text-brand-700 dark:text-brand-300'
+                  : 'bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-300'
               }`}>
                 <div className="font-semibold flex items-center gap-1.5">
                   {submitResult.success ? <Check className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
@@ -567,7 +567,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                       href={submitResult.prUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline font-mono text-brand-200 hover:text-white"
+                      className="underline font-mono text-brand-600 dark:text-brand-200 hover:text-brand-800"
                     >
                       View GitHub Pull Request →
                     </a>
@@ -589,7 +589,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
               <button
                 type="button"
                 onClick={handleDownloadJson}
-                className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sm font-semibold text-slate-200 transition-colors"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-sm font-semibold text-slate-800 dark:text-slate-200 transition-colors shadow-sm"
               >
                 <Download className="w-4 h-4" />
                 <span>Download JSON</span>
@@ -603,20 +603,20 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
           <div className="sticky top-24 glass-panel p-6 rounded-2xl space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <FileCode className="w-5 h-5 text-brand-400" />
-                <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
+                <FileCode className="w-5 h-5 text-brand-500 dark:text-brand-400" />
+                <h2 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono">
                   Generated JSON ({slug ? `${slug}.json` : 'server.json'})
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={handleCopyJson}
-                className="flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                className="flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors"
               >
                 {copiedJson ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-brand-400" />
-                    <span className="text-brand-400">Copied</span>
+                    <Check className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                    <span className="text-brand-600 dark:text-brand-400">Copied</span>
                   </>
                 ) : (
                   <>
@@ -627,11 +627,11 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
               </button>
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Every MCP listed on <strong className="text-slate-300">aihost.info</strong> lives in its own standalone JSON file under <code className="text-brand-300">src/data/servers/</code> for modularity and effortless GitHub community pull requests.
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every MCP listed on <strong className="text-slate-900 dark:text-slate-300">aihost.info</strong> lives in its own standalone JSON file under <code className="text-brand-600 dark:text-brand-300">src/data/servers/</code> for modularity and effortless GitHub community pull requests.
             </p>
 
-            <pre className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-slate-200 max-h-[560px] overflow-y-auto leading-relaxed">
+            <pre className="p-4 rounded-xl bg-slate-900 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-[11px] font-mono text-slate-100 dark:text-slate-200 max-h-[560px] overflow-y-auto leading-relaxed shadow-inner">
               <code>{jsonString}</code>
             </pre>
           </div>
