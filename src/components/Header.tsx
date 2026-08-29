@@ -17,24 +17,17 @@ export const Header: React.FC<HeaderProps> = ({
   onSearchChange,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('aihost_theme') as 'dark' | 'light' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+    if (savedTheme === 'dark') {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initialTheme = prefersDark ? 'dark' : 'dark'; // default dark
-      setTheme(initialTheme);
-      if (initialTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
+      // Default to light theme
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
