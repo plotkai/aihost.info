@@ -583,7 +583,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = ({ onBack }) => {
                 className="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-brand-500/20 disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
-                <span>{isSubmitting ? 'Opening Pull Request...' : 'Submit via Cloudflare Worker PR'}</span>
+                <span>{isSubmitting ? 'Submitting...' : 'Submit'}</span>
               </button>
 
               <button
