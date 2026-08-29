@@ -98,63 +98,188 @@ Hosted statically on GitHub Pages at **[aihost.info](https://aihost.info)**.
 
 ## ➕ Adding a New MCP Server
 
-To list a new MCP server, create a JSON file in `src/data/servers/<your-server-slug>.json`:
+To list a new MCP server in the registry, create a standalone JSON file under `src/data/servers/<slug>.json`:
+
+### Complete JSON Schema Reference
 
 ```json
 {
-  "id": "my-server",
+  "id": "my-mcp-server",
   "name": "My MCP Server",
-  "slug": "my-server",
-  "shortDescription": "Brief summary of features.",
-  "longDescription": "Detailed overview.",
+  "slug": "my-mcp-server",
+  "shortDescription": "High-performance MCP server for interacting with service X.",
+  "longDescription": "Detailed overview of features, supported operations, architecture, and assistant workflows.",
   "category": "Developer Tools",
   "demography": {
     "region": "Global",
-    "country": "United States",
-    "origin": "Organization or Author"
+    "country": "International",
+    "origin": "Organization or Author Name"
   },
-  "company": "Organization",
-  "author": "author",
-  "repositoryUrl": "https://github.com/org/repo",
+  "company": "Organization Name",
+  "author": "author_github_handle",
+  "authorUrl": "https://github.com/author_github_handle",
+  "repositoryUrl": "https://github.com/org/mcp-server-repo",
+  "homepageUrl": "https://example.com/product",
   "license": "MIT",
-  "transport": ["stdio"],
+  "transport": ["stdio", "sse"],
   "verified": true,
-  "tags": ["tools", "api"],
+  "featured": false,
+  "stars": 1500,
+  "tags": ["tools", "api", "database", "ai"],
+  "icon": "database",
+  "logoUrl": "https://cdn.simpleicons.org/postgresql",
   "hosting": "local",
   "envVars": [
     {
       "name": "API_KEY",
       "required": true,
-      "description": "API Key from provider."
+      "description": "Your API authorization secret key.",
+      "placeholder": "sk_live_...",
+      "default": ""
+    },
+    {
+      "name": "API_ENDPOINT",
+      "required": false,
+      "description": "Optional custom API gateway URL.",
+      "placeholder": "https://api.example.com/v1"
     }
   ],
   "tools": [
     {
-      "name": "tool_name",
-      "description": "What the tool does."
+      "name": "query_resource",
+      "description": "Search and retrieve records by keyword filter.",
+      "parameters": [
+        {
+          "name": "query",
+          "type": "string",
+          "required": true,
+          "description": "Search query or natural language phrase."
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "required": false,
+          "description": "Max results to return (default: 10)."
+        }
+      ]
+    },
+    {
+      "name": "create_item",
+      "description": "Create a new entity in the remote system.",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "Title of the item."
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "required": false,
+          "description": "Arbitrary key-value metadata pairs."
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "uri": "service://workspace/current",
+      "name": "Active Workspace Context",
+      "description": "Live workspace schema and status.",
+      "mimeType": "application/json"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "debug_connection",
+      "description": "Guided prompt to inspect server health and permissions.",
+      "arguments": [
+        {
+          "name": "verbose",
+          "description": "Include trace diagnostics",
+          "required": false
+        }
+      ]
     }
   ],
   "installConfigs": {
     "claude": {
       "command": "npx",
-      "args": ["-y", "my-server"]
+      "args": ["-y", "@org/mcp-server"],
+      "env": {
+        "API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@org/mcp-server"],
+      "env": {
+        "API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@org/mcp-server"],
+      "env": {
+        "API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@org/mcp-server"],
+      "env": {
+        "API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@org/mcp-server"],
+      "env": {
+        "API_KEY": "YOUR_API_KEY"
+      }
     }
   },
   "quickstart": {
+    "prerequisites": [
+      "Node.js 18+ or Docker runtime",
+      "Valid API credentials"
+    ],
     "installSteps": [
       {
-        "title": "Configure Assistant",
-        "description": "Add to your MCP settings file."
+        "title": "Install and Test Locally",
+        "description": "Verify your credentials using the CLI binary.",
+        "code": "npx -y @org/mcp-server --test",
+        "language": "bash"
+      },
+      {
+        "title": "Configure Assistant Settings",
+        "description": "Paste the generated configuration JSON into your assistant's MCP config file."
+      }
+    ],
+    "examples": [
+      {
+        "title": "Query records in assistant",
+        "prompt": "Find all open tickets created in the last 7 days and summarize their priorities."
       }
     ]
   },
   "aihostBridgeSupported": true,
-  "createdAt": "2026-01-01T00:00:00Z",
-  "updatedAt": "2026-01-01T00:00:00Z"
+  "createdAt": "2026-01-15T00:00:00Z",
+  "updatedAt": "2026-02-20T00:00:00Z"
 }
 ```
 
-Or visit the `/submit` page directly in the app to generate the JSON interactively!
+### Supported Enums
+
+| Field | Allowed Values |
+|---|---|
+| **`category`** | `'Developer Tools'`, `'Databases & SQL'`, `'Cloud & DevOps'`, `'AI & Machine Learning'`, `'Web & Scraping'`, `'Communication & Productivity'`, `'Search & Knowledge'`, `'Security & Auth'`, `'Finance & Crypto'`, `'Utilities'` |
+| **`demography.region`** | `'Global'`, `'North America'`, `'Europe'`, `'Asia-Pacific'`, `'Latin America'` |
+| **`transport`** | `'stdio'`, `'sse'`, `'websocket'` |
+| **`hosting`** | `'local'`, `'cloud'`, `'hybrid'` |
+
+You can also visit the [**/submit**](https://aihost.info/submit) page in the app to build, validate, and preview your JSON schema interactively!
 
 ---
 
