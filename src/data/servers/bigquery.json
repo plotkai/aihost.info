@@ -1,0 +1,80 @@
+{
+  "id": "bigquery",
+  "name": "Google BigQuery MCP Server",
+  "slug": "bigquery",
+  "shortDescription": "Execute analytical SQL queries, inspect enterprise datasets, schemas, partition tables, and optimize query costs.",
+  "longDescription": "Query petabyte-scale datasets in Google BigQuery. Let AI assistants analyze schemas, run partitioned SQL queries, inspect table metadata, and calculate processed bytes for data analytics.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Google Cloud & Community"
+  },
+  "company": "Google Cloud",
+  "author": "googlecloud-community",
+  "repositoryUrl": "https://github.com/googlecloudplatform/mcp-bigquery",
+  "license": "Apache-2.0",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 3800,
+  "tags": ["bigquery", "google-cloud", "sql", "data-warehouse", "analytics", "gcp"],
+  "icon": "database",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "GOOGLE_APPLICATION_CREDENTIALS",
+      "required": true,
+      "description": "Path to GCP Service Account JSON key or ADC config.",
+      "placeholder": "/path/to/sa-key.json"
+    },
+    {
+      "name": "GCP_PROJECT_ID",
+      "required": true,
+      "description": "Default Google Cloud Project ID.",
+      "placeholder": "my-analytics-prod-123"
+    }
+  ],
+  "tools": [
+    { "name": "bigquery_run_query", "description": "Execute a SQL query against BigQuery datasets." },
+    { "name": "bigquery_list_tables", "description": "List datasets and tables in a project." },
+    { "name": "bigquery_get_schema", "description": "Retrieve table schema fields and clustering properties." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@googlecloud/mcp-bigquery"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/sa-key.json",
+        "GCP_PROJECT_ID": "my-project-id"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@googlecloud/mcp-bigquery"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/sa-key.json",
+        "GCP_PROJECT_ID": "my-project-id"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@googlecloud/mcp-bigquery"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/sa-key.json",
+        "GCP_PROJECT_ID": "my-project-id"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Google Cloud project with BigQuery API enabled", "Service Account key"],
+    "installSteps": [
+      {
+        "title": "Configure Service Account",
+        "description": "Provide Service Account JSON path and GCP Project ID."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2025-01-15T00:00:00Z",
+  "updatedAt": "2026-02-12T00:00:00Z"
+}

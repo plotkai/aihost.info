@@ -1,0 +1,72 @@
+{
+  "id": "redis",
+  "name": "Redis In-Memory Data MCP",
+  "slug": "redis",
+  "shortDescription": "Inspect cache keys, execute Redis commands, monitor pub/sub, and inspect JSON/Vector data structures.",
+  "longDescription": "Interact with Redis instances. Query keys, inspect TTLs, evaluate memory usage, run commands across string/hash/list/set/zset data types, and inspect Redis Vector Search indices.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Community"
+  },
+  "company": "Redis Community",
+  "author": "redis-mcp",
+  "repositoryUrl": "https://github.com/redis-developer/mcp-redis",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 3400,
+  "tags": ["redis", "cache", "in-memory", "key-value", "database", "pub-sub"],
+  "icon": "database",
+  "hosting": "hybrid",
+  "envVars": [
+    {
+      "name": "REDIS_URL",
+      "required": true,
+      "description": "Redis connection URL (redis://localhost:6379 or rediss://...)",
+      "placeholder": "redis://default:password@localhost:6379"
+    }
+  ],
+  "tools": [
+    { "name": "redis_get", "description": "Get value of key." },
+    { "name": "redis_set", "description": "Set string value of a key with optional expiration." },
+    { "name": "redis_keys", "description": "Find keys matching a glob pattern." },
+    { "name": "redis_info", "description": "Get information and memory statistics about the Redis server." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@redis/mcp-server-redis"],
+      "env": {
+        "REDIS_URL": "redis://localhost:6379"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@redis/mcp-server-redis"],
+      "env": {
+        "REDIS_URL": "redis://localhost:6379"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@redis/mcp-server-redis"],
+      "env": {
+        "REDIS_URL": "redis://localhost:6379"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Redis server running locally or cloud URL"],
+    "installSteps": [
+      {
+        "title": "Set Redis Connection String",
+        "description": "Pass `REDIS_URL` in environment variables."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2025-01-08T00:00:00Z",
+  "updatedAt": "2026-01-25T00:00:00Z"
+}

@@ -1,0 +1,89 @@
+{
+  "id": "filesystem",
+  "name": "Local Filesystem MCP Server",
+  "slug": "filesystem",
+  "shortDescription": "Secure, scoped read/write access to specified directories on your local filesystem for file operations and workspace editing.",
+  "longDescription": "Provide LLM agents with strictly sandboxed directory access on your local machine to read files, search directory trees, create/edit source files, and inspect workspace hierarchies.",
+  "category": "Utilities",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic / Model Context Protocol"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 11200,
+  "tags": ["filesystem", "local", "files", "directories", "workspace", "io", "editor"],
+  "icon": "folder",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    {
+      "name": "read_file",
+      "description": "Read the complete contents of a file from permitted paths."
+    },
+    {
+      "name": "write_file",
+      "description": "Create a new file or overwrite existing file contents."
+    },
+    {
+      "name": "list_directory",
+      "description": "Get a detailed listing of all files and folders in a directory."
+    },
+    {
+      "name": "search_files",
+      "description": "Recursively search for files matching patterns in allowed paths."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": [
+      "Node.js 18+",
+      "Explicit directory paths to grant access to"
+    ],
+    "installSteps": [
+      {
+        "title": "Specify Allowed Directories",
+        "description": "Pass target directory paths as CLI arguments to sandbox file access.",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"filesystem\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/path/to/my/projects\"]\n    }\n  }\n}"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Analyze Directory",
+        "prompt": "List all typescript files in my project and summarize their structure."
+      }
+    ]
+  },
+  "aihostBridgeSupported": false,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-05T00:00:00Z"
+}

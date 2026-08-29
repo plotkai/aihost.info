@@ -1,0 +1,96 @@
+{
+  "id": "postgres",
+  "name": "PostgreSQL MCP Server",
+  "slug": "postgres",
+  "shortDescription": "Read-only and transactional querying, schema inspection, table analysis, and performance tuning for PostgreSQL databases.",
+  "longDescription": "Connect your AI assistant to PostgreSQL databases for automated data exploration, SQL schema analysis, table relationships, safe query execution, and migration generation.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic Community"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 9800,
+  "tags": ["database", "postgres", "sql", "analytics", "data", "schema", "relational"],
+  "icon": "database",
+  "hosting": "local",
+  "envVars": [
+    {
+      "name": "POSTGRES_CONNECTION_STRING",
+      "required": true,
+      "description": "PostgreSQL URI connection string (e.g. postgresql://user:pass@host:5432/dbname).",
+      "placeholder": "postgresql://postgres:password@localhost:5432/mydb"
+    }
+  ],
+  "tools": [
+    {
+      "name": "query",
+      "description": "Execute a read-only SQL query on the connected PostgreSQL database."
+    },
+    {
+      "name": "list_tables",
+      "description": "List all schemas and tables in the PostgreSQL database."
+    },
+    {
+      "name": "describe_table",
+      "description": "Get detailed column types, primary keys, foreign keys, and indexes for a table."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5432/mydb"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5432/mydb"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5432/mydb"]
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5432/mydb"]
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5432/mydb"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": [
+      "Running PostgreSQL instance with accessible network/localhost connection",
+      "Node.js 18+"
+    ],
+    "installSteps": [
+      {
+        "title": "Configure Connection URI",
+        "description": "Provide your database connection string as the last argument in your MCP server configuration.",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"postgres\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-postgres\", \"postgresql://user:password@localhost:5432/my_db\"]\n    }\n  }\n}"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Inspect Schema",
+        "prompt": "Show me the tables in this database and describe the relationship between users and orders."
+      },
+      {
+        "title": "Analyze Data",
+        "prompt": "Write and run a query to find the top 5 most active users in the last 30 days."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-20T00:00:00Z"
+}

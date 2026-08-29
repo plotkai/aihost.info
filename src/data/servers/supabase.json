@@ -1,0 +1,84 @@
+{
+  "id": "supabase",
+  "name": "Supabase MCP Server",
+  "slug": "supabase",
+  "shortDescription": "Manage Supabase projects, databases, Edge Functions, storage buckets, auth policies, and migrations.",
+  "longDescription": "Official Supabase Model Context Protocol server enabling AI assistants to inspect Postgres tables, generate Edge Functions, review Row Level Security (RLS) policies, and query database instances directly.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "Singapore / United States",
+    "origin": "Supabase"
+  },
+  "company": "Supabase",
+  "author": "supabase",
+  "authorUrl": "https://supabase.com",
+  "repositoryUrl": "https://github.com/supabase-community/supabase-mcp",
+  "homepageUrl": "https://supabase.com",
+  "license": "Apache-2.0",
+  "transport": ["stdio", "sse"],
+  "verified": true,
+  "featured": true,
+  "stars": 6200,
+  "tags": ["supabase", "postgres", "auth", "storage", "edge-functions", "backend-as-a-service", "rls"],
+  "icon": "database",
+  "hosting": "hybrid",
+  "envVars": [
+    {
+      "name": "SUPABASE_ACCESS_TOKEN",
+      "required": true,
+      "description": "Supabase Personal Access Token from dashboard account settings.",
+      "placeholder": "sbp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "name": "SUPABASE_PROJECT_REF",
+      "required": true,
+      "description": "Target project reference ID (e.g., abcdefghijklmno).",
+      "placeholder": "abcdefghijklmno"
+    }
+  ],
+  "tools": [
+    { "name": "supabase_execute_sql", "description": "Execute SQL statements on the Supabase database." },
+    { "name": "supabase_list_tables", "description": "List all tables, views, and schemas." },
+    { "name": "supabase_get_rls_policies", "description": "Inspect RLS policies and access rules." },
+    { "name": "supabase_list_edge_functions", "description": "List deployed Edge Functions and their status." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN",
+        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN",
+        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN",
+        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Supabase Account", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Configure Credentials",
+        "description": "Set `SUPABASE_ACCESS_TOKEN` and `SUPABASE_PROJECT_REF`."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-12-10T00:00:00Z",
+  "updatedAt": "2026-02-12T00:00:00Z"
+}

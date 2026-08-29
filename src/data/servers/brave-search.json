@@ -1,0 +1,111 @@
+{
+  "id": "brave-search",
+  "name": "Brave Search MCP Server",
+  "slug": "brave-search",
+  "shortDescription": "Real-time web search and local point-of-interest discovery powered by the privacy-preserving Brave Search API.",
+  "longDescription": "Equip LLM assistants with real-time web intelligence, live search queries, fresh documentation retrieval, and local place/business searches using Brave's independent web search index.",
+  "category": "Search & Knowledge",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Brave Software & MCP"
+  },
+  "company": "Brave Software",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+  "homepageUrl": "https://brave.com/search/api/",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 8400,
+  "tags": ["search", "web-search", "brave", "live-data", "research", "privacy", "knowledge"],
+  "icon": "search",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "BRAVE_API_KEY",
+      "required": true,
+      "description": "Brave Search API key (Free tier provides up to 2,000 queries/month).",
+      "placeholder": "BSAxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "tools": [
+    {
+      "name": "brave_web_search",
+      "description": "Execute web searches with query string, count, and country filters.",
+      "parameters": [
+        { "name": "query", "type": "string", "required": true, "description": "Search query" },
+        { "name": "count", "type": "number", "required": false, "description": "Results count (1-20)" }
+      ]
+    },
+    {
+      "name": "brave_local_search",
+      "description": "Search for local businesses, restaurants, services, and geographic locations."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": [
+      "Brave Search API Key from api.search.brave.com (Free plan available)",
+      "Node.js 18+"
+    ],
+    "installSteps": [
+      {
+        "title": "Get Free Brave API Key",
+        "description": "Register at https://brave.com/search/api/ to get your API key."
+      },
+      {
+        "title": "Add to MCP Config",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"brave-search\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-brave-search\"],\n      \"env\": {\n        \"BRAVE_API_KEY\": \"YOUR_API_KEY_HERE\"\n      }\n    }\n  }\n}"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Latest Framework Release",
+        "prompt": "Search the web for the latest changelog notes for Next.js 15."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-10T00:00:00Z"
+}

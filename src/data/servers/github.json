@@ -1,0 +1,138 @@
+{
+  "id": "github",
+  "name": "GitHub MCP Server",
+  "slug": "github",
+  "shortDescription": "Inspect repositories, search code, manage issues, pull requests, commits and branch management directly from AI assistants.",
+  "longDescription": "The official GitHub Model Context Protocol server enables your AI assistant to read, search, and manipulate repositories, branches, files, pull requests, issues, and commits through GitHub's GraphQL and REST APIs.",
+  "category": "Developer Tools",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic & GitHub Open Source"
+  },
+  "company": "GitHub / Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+  "homepageUrl": "https://github.com",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 12500,
+  "tags": ["git", "github", "issues", "pull-requests", "code-search", "version-control", "collaboration"],
+  "icon": "github",
+  "hosting": "local",
+  "envVars": [
+    {
+      "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
+      "required": true,
+      "description": "GitHub Personal Access Token (classic or fine-grained) with repo permissions.",
+      "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "tools": [
+    {
+      "name": "create_or_update_file",
+      "description": "Create or update a single file in a repository with commit message.",
+      "parameters": [
+        { "name": "owner", "type": "string", "required": true, "description": "Repository owner" },
+        { "name": "repo", "type": "string", "required": true, "description": "Repository name" },
+        { "name": "path", "type": "string", "required": true, "description": "Path in repo" },
+        { "name": "content", "type": "string", "required": true, "description": "File content" },
+        { "name": "message", "type": "string", "required": true, "description": "Commit message" }
+      ]
+    },
+    {
+      "name": "search_repositories",
+      "description": "Search for GitHub repositories using query parameters."
+    },
+    {
+      "name": "create_issue",
+      "description": "Create a new issue in a specified repository."
+    },
+    {
+      "name": "create_pull_request",
+      "description": "Create a new pull request between branches."
+    },
+    {
+      "name": "get_file_contents",
+      "description": "Retrieve file contents or directory listing from repository branch."
+    },
+    {
+      "name": "list_commits",
+      "description": "Fetch commit history for a branch or file."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+      }
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+      }
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": [
+      "Node.js 18+ installed on your system",
+      "A GitHub Personal Access Token (PAT) with repo and user scopes"
+    ],
+    "installSteps": [
+      {
+        "title": "Generate GitHub Token",
+        "description": "Visit GitHub Settings > Developer Settings > Personal access tokens and generate a token with repo read/write scopes."
+      },
+      {
+        "title": "Configure Assistant Config",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"github\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-github\"],\n      \"env\": {\n        \"GITHUB_PERSONAL_ACCESS_TOKEN\": \"ghp_yourTokenHere\"\n      }\n    }\n  }\n}"
+      },
+      {
+        "title": "Restart AI Assistant",
+        "description": "Restart Claude Desktop, Cursor, or your assistant to initialize connection to the GitHub MCP server."
+      }
+    ],
+    "examples": [
+      {
+        "title": "Inspect Recent Pull Requests",
+        "prompt": "Show me all open PRs in my repository username/project and summarize their diffs."
+      },
+      {
+        "title": "Create a Bug Issue",
+        "prompt": "File an issue in username/repo titled 'Fix CORS header missing' with steps to reproduce."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-02-15T00:00:00Z"
+}

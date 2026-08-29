@@ -1,0 +1,71 @@
+{
+  "id": "sentry",
+  "name": "Sentry Error Tracking MCP",
+  "slug": "sentry",
+  "shortDescription": "Retrieve error stack traces, triage application issues, inspect breadcrumbs, and diagnose production crashes.",
+  "longDescription": "Connect Sentry error and performance telemetry directly to your AI assistant. Debug stack traces, identify root causes of uncaught exceptions, and query issue metrics across projects.",
+  "category": "Cloud & DevOps",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Sentry"
+  },
+  "company": "Sentry",
+  "author": "getsentry",
+  "authorUrl": "https://sentry.io",
+  "repositoryUrl": "https://github.com/getsentry/mcp-server-sentry",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 3900,
+  "tags": ["sentry", "errors", "observability", "debugging", "crash-reporting", "telemetry"],
+  "icon": "shield-alert",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "SENTRY_AUTH_TOKEN",
+      "required": true,
+      "description": "Sentry User Auth Token with issue:read and org:read scopes.",
+      "placeholder": "sntryu_xxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "tools": [
+    { "name": "get_issue_details", "description": "Fetch stack trace and diagnostic metadata for a specific issue ID." },
+    { "name": "list_recent_issues", "description": "List active, unresolved issues in a project." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_AUTH_TOKEN"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_AUTH_TOKEN"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_AUTH_TOKEN"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Sentry Organization access", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Set Auth Token",
+        "description": "Add `SENTRY_AUTH_TOKEN` to your client configuration."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2025-01-10T00:00:00Z",
+  "updatedAt": "2026-02-01T00:00:00Z"
+}

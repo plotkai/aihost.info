@@ -1,0 +1,72 @@
+{
+  "id": "neon",
+  "name": "Neon Serverless Postgres MCP",
+  "slug": "neon",
+  "shortDescription": "Create database branches, execute serverless Postgres queries, manage connection pooling and auto-scaling.",
+  "longDescription": "Interact with Neon Serverless Postgres platform. Create instant point-in-time database branches for preview deployments, run queries, monitor compute autoscaling, and manage API keys.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Neon Inc"
+  },
+  "company": "Neon",
+  "author": "neondatabase",
+  "authorUrl": "https://neon.tech",
+  "repositoryUrl": "https://github.com/neondatabase/mcp-server-neon",
+  "license": "Apache-2.0",
+  "transport": ["stdio", "sse"],
+  "verified": true,
+  "stars": 4100,
+  "tags": ["neon", "postgres", "serverless", "branching", "sql", "cloud-database"],
+  "icon": "database",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "NEON_API_KEY",
+      "required": true,
+      "description": "Neon Personal API Key generated from Account Console.",
+      "placeholder": "neon_api_key_xxxxxxxx"
+    }
+  ],
+  "tools": [
+    { "name": "neon_create_branch", "description": "Create a new lightweight database branch for testing or feature isolation." },
+    { "name": "neon_run_sql", "description": "Run SQL statements via Neon serverless HTTP endpoint." },
+    { "name": "neon_list_projects", "description": "List all Neon projects and branch states." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "env": {
+        "NEON_API_KEY": "YOUR_NEON_API_KEY"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "env": {
+        "NEON_API_KEY": "YOUR_NEON_API_KEY"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "env": {
+        "NEON_API_KEY": "YOUR_NEON_API_KEY"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Neon Account", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Configure Neon API Key",
+        "description": "Create an API key in Neon console and pass it in `NEON_API_KEY`."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2025-01-05T00:00:00Z",
+  "updatedAt": "2026-02-05T00:00:00Z"
+}

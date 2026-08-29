@@ -1,0 +1,59 @@
+{
+  "id": "puppeteer",
+  "name": "Puppeteer Browser MCP Server",
+  "slug": "puppeteer",
+  "shortDescription": "Full headless browser automation, web page rendering, screenshot capture, form filling, and JavaScript execution.",
+  "longDescription": "Empower LLMs with live web browsing capabilities, interacting with dynamic JavaScript-rendered single-page applications, clicking elements, taking full-page screenshots, and extracting DOM structures.",
+  "category": "Web & Scraping",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic & Puppeteer Team"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 10500,
+  "tags": ["browser", "puppeteer", "scraping", "automation", "headless-chrome", "screenshots", "dom"],
+  "icon": "globe",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    { "name": "puppeteer_navigate", "description": "Navigate the browser to any target URL." },
+    { "name": "puppeteer_screenshot", "description": "Capture a screenshot of current viewport or specific CSS selector." },
+    { "name": "puppeteer_click", "description": "Click an element identified by CSS selector." },
+    { "name": "puppeteer_fill", "description": "Fill input values into form fields." },
+    { "name": "puppeteer_evaluate", "description": "Execute arbitrary JavaScript code in the browser console." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Chromium / Google Chrome installed or downloaded via Puppeteer", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Install and Run",
+        "description": "Add `@modelcontextprotocol/server-puppeteer` to your client configuration."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-02-01T00:00:00Z"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "aws",
+  "name": "AWS Cloud MCP Server",
+  "slug": "aws",
+  "shortDescription": "Interact with AWS resources: S3 buckets, Lambda functions, CloudWatch logs, ECS tasks, and DynamoDB.",
+  "longDescription": "Connect AI development assistants to your Amazon Web Services accounts. Inspect S3 bucket objects, invoke and test Lambda functions, query CloudWatch log streams, and inspect DynamoDB table items with IAM credentials.",
+  "category": "Cloud & DevOps",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Community"
+  },
+  "company": "AWS Community",
+  "author": "aws-samples",
+  "repositoryUrl": "https://github.com/aws-samples/mcp-server-aws",
+  "license": "Apache-2.0",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 3600,
+  "tags": ["aws", "s3", "lambda", "cloudwatch", "cloud", "devops", "amazon"],
+  "icon": "cloud",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "AWS_REGION",
+      "required": true,
+      "description": "AWS Target Region (e.g. us-east-1, eu-west-1).",
+      "placeholder": "us-east-1"
+    },
+    {
+      "name": "AWS_PROFILE",
+      "required": false,
+      "description": "Configured AWS CLI profile name from ~/.aws/credentials",
+      "placeholder": "default"
+    }
+  ],
+  "tools": [
+    { "name": "s3_list_objects", "description": "List keys and prefixes in an S3 bucket." },
+    { "name": "cloudwatch_get_logs", "description": "Fetch recent log events from a CloudWatch log group." },
+    { "name": "lambda_list_functions", "description": "List deployed AWS Lambda functions in region." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@aws-samples/mcp-server-aws"],
+      "env": {
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@aws-samples/mcp-server-aws"],
+      "env": {
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@aws-samples/mcp-server-aws"],
+      "env": {
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Configured AWS credentials via `aws configure` or environment variables"],
+    "installSteps": [
+      {
+        "title": "Set Environment Variables",
+        "description": "Set `AWS_REGION` and ensure credentials exist in ~/.aws/credentials or IAM role."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2025-01-18T00:00:00Z",
+  "updatedAt": "2026-02-16T00:00:00Z"
+}

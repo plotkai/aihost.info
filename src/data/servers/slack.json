@@ -1,0 +1,83 @@
+{
+  "id": "slack",
+  "name": "Slack MCP Server",
+  "slug": "slack",
+  "shortDescription": "Read channel history, post messages, reply to threads, and query workspace members across Slack channels.",
+  "longDescription": "Integrate AI agents with your company or team Slack workspace to automatically monitor conversations, summarize active threads, post updates, and look up team member profiles.",
+  "category": "Communication & Productivity",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Slack / Salesforce"
+  },
+  "company": "Slack / Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 6700,
+  "tags": ["slack", "chat", "messaging", "collaboration", "channels", "bots", "communication"],
+  "icon": "message-square",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "SLACK_BOT_TOKEN",
+      "required": true,
+      "description": "Slack Bot User OAuth Token (xoxb-...)",
+      "placeholder": "xoxb-xxxxxxxxxxxx-xxxxxxxxxxxx"
+    },
+    {
+      "name": "SLACK_TEAM_ID",
+      "required": true,
+      "description": "Slack Workspace Team ID (T...)",
+      "placeholder": "T0123456789"
+    }
+  ],
+  "tools": [
+    { "name": "slack_post_message", "description": "Post a new message or announcement to a Slack channel." },
+    { "name": "slack_reply_to_thread", "description": "Reply in thread to an existing message timestamp." },
+    { "name": "slack_list_channels", "description": "List public and private channels in the workspace." },
+    { "name": "slack_get_channel_history", "description": "Retrieve recent message history and discussions from a channel." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-token",
+        "SLACK_TEAM_ID": "T0123456789"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-token",
+        "SLACK_TEAM_ID": "T0123456789"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-token",
+        "SLACK_TEAM_ID": "T0123456789"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Slack Workspace admin access to install Bot App", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Create Slack App",
+        "description": "Create an App at api.slack.com/apps with scopes: `channels:history`, `channels:read`, `chat:write`."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-12T00:00:00Z"
+}

@@ -1,0 +1,71 @@
+{
+  "id": "notion",
+  "name": "Notion Workspace MCP Server",
+  "slug": "notion",
+  "shortDescription": "Search pages, query databases, append blocks, and extract structured notes from your Notion workspace.",
+  "longDescription": "Connect AI assistants to your company knowledge base in Notion. Search documentation, query Notion databases, write new pages, and append meeting summaries directly to workspace docs.",
+  "category": "Communication & Productivity",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Community"
+  },
+  "company": "Notion",
+  "author": "suekou",
+  "repositoryUrl": "https://github.com/suekou/mcp-notion-server",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 4300,
+  "tags": ["notion", "wiki", "docs", "knowledge-base", "productivity", "notes"],
+  "icon": "file-text",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "NOTION_API_TOKEN",
+      "required": true,
+      "description": "Notion Internal Integration Secret Token (secret_...)",
+      "placeholder": "secret_xxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "tools": [
+    { "name": "search_pages", "description": "Search for Notion pages and databases by query text." },
+    { "name": "get_page_content", "description": "Retrieve block children content for a Notion page." },
+    { "name": "append_block_children", "description": "Append markdown text or checklist blocks to a page." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "mcp-notion-server"],
+      "env": {
+        "NOTION_API_TOKEN": "YOUR_NOTION_SECRET"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "mcp-notion-server"],
+      "env": {
+        "NOTION_API_TOKEN": "YOUR_NOTION_SECRET"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "mcp-notion-server"],
+      "env": {
+        "NOTION_API_TOKEN": "YOUR_NOTION_SECRET"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Notion Integration Token", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Create Notion Integration",
+        "description": "Visit notion.so/profile/integrations and share target pages with your integration."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-12-20T00:00:00Z",
+  "updatedAt": "2026-02-02T00:00:00Z"
+}

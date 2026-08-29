@@ -1,0 +1,65 @@
+{
+  "id": "docker",
+  "name": "Docker MCP Server",
+  "slug": "docker",
+  "shortDescription": "Manage containers, images, volumes, inspect container logs, and orchestrate Docker Compose stacks.",
+  "longDescription": "Empower coding assistants to manage Docker containers, inspect container resource utilization, tail container logs, build Dockerfiles, and execute commands inside running containers safely.",
+  "category": "Cloud & DevOps",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Community"
+  },
+  "company": "Community / Docker",
+  "author": "docker-mcp",
+  "repositoryUrl": "https://github.com/docker/mcp-server",
+  "license": "Apache-2.0",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 5800,
+  "tags": ["docker", "containers", "devops", "logs", "docker-compose", "infrastructure"],
+  "icon": "container",
+  "hosting": "local",
+  "envVars": [
+    {
+      "name": "DOCKER_HOST",
+      "required": false,
+      "description": "Docker socket location (defaults to unix:///var/run/docker.sock)",
+      "placeholder": "unix:///var/run/docker.sock"
+    }
+  ],
+  "tools": [
+    { "name": "list_containers", "description": "List running and stopped Docker containers." },
+    { "name": "get_container_logs", "description": "Fetch stdout/stderr logs from a container." },
+    { "name": "inspect_container", "description": "Inspect detailed container configuration, ports, and mounts." },
+    { "name": "start_container", "description": "Start a stopped container." },
+    { "name": "stop_container", "description": "Stop a running container." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@docker/mcp-server"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@docker/mcp-server"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@docker/mcp-server"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Docker Engine or Docker Desktop running locally"],
+    "installSteps": [
+      {
+        "title": "Configure MCP in Assistant",
+        "description": "Add `@docker/mcp-server` to your configuration."
+      }
+    ]
+  },
+  "aihostBridgeSupported": false,
+  "createdAt": "2024-12-01T00:00:00Z",
+  "updatedAt": "2026-02-01T00:00:00Z"
+}

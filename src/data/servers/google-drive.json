@@ -1,0 +1,100 @@
+{
+  "id": "google-drive",
+  "name": "Google Drive & Workspace MCP",
+  "slug": "google-drive",
+  "shortDescription": "Search files, read Google Docs, parse Sheets, and extract metadata from your Google Drive workspace.",
+  "longDescription": "Connect AI assistants to Google Drive to search folders, read Google Docs, analyze Google Sheets data, and inspect shared workspace files with OAuth2 credentials.",
+  "category": "Communication & Productivity",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Model Context Protocol Community"
+  },
+  "company": "Google / MCP",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 7900,
+  "tags": ["google", "google-drive", "docs", "sheets", "cloud-storage", "productivity", "workspace"],
+  "icon": "cloud",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "GDRIVE_CREDENTIALS_PATH",
+      "required": true,
+      "description": "Absolute path to Google Cloud OAuth credentials JSON file.",
+      "placeholder": "/path/to/credentials.json"
+    }
+  ],
+  "tools": [
+    {
+      "name": "search",
+      "description": "Search for files in Google Drive by filename or content keywords."
+    },
+    {
+      "name": "read_file",
+      "description": "Read file contents or Google Document text by file ID."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/path/to/credentials.json"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/path/to/credentials.json"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/path/to/credentials.json"
+      }
+    },
+    "windsurf": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/path/to/credentials.json"
+      }
+    },
+    "cline": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/path/to/credentials.json"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": [
+      "Google Cloud Console project with Google Drive API enabled",
+      "Downloaded OAuth client ID json credentials"
+    ],
+    "installSteps": [
+      {
+        "title": "Enable Google Drive API",
+        "description": "In Google Cloud Console, enable Drive API and configure OAuth consent screen."
+      },
+      {
+        "title": "Set Config in Assistant",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"gdrive\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-gdrive\"],\n      \"env\": {\n        \"GDRIVE_CREDENTIALS_PATH\": \"/Users/name/.gdrive/credentials.json\"\n      }\n    }\n  }\n}"
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-18T00:00:00Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "sequential-thinking",
+  "name": "Sequential Thinking MCP Server",
+  "slug": "sequential-thinking",
+  "shortDescription": "Dynamic multi-step chain-of-thought reasoning, hypothesis testing, and reflective problem decomposition.",
+  "longDescription": "A specialized MCP server designed to augment AI models with dynamic structured reasoning. Allows models to branch hypotheses, adjust thinking steps dynamically, revise conclusions, and tackle complex algorithmic and architectural problems.",
+  "category": "AI & Machine Learning",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic Model Context Protocol"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 8900,
+  "tags": ["reasoning", "chain-of-thought", "thinking", "problem-solving", "reflection", "ai-architecture"],
+  "icon": "sparkles",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    {
+      "name": "sequentialthinking",
+      "description": "Tool for dynamic problem decomposition, sequential thought development, and hypothesis revision."
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Add to Config",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"sequential-thinking\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-sequential-thinking\"]\n    }\n  }\n}"
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-02-15T00:00:00Z"
+}

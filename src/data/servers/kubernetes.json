@@ -1,0 +1,62 @@
+{
+  "id": "kubernetes",
+  "name": "Kubernetes Cluster MCP",
+  "slug": "kubernetes",
+  "shortDescription": "Inspect Kubernetes pods, deployments, services, ingress, describe cluster events, and debug workloads.",
+  "longDescription": "Interact with local and remote Kubernetes clusters. Query namespace resources, inspect deployment health, describe failed pods, fetch pod logs, and inspect CRDs.",
+  "category": "Cloud & DevOps",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Community"
+  },
+  "company": "Kubernetes Community",
+  "author": "fluxninja",
+  "repositoryUrl": "https://github.com/fluxninja/k8s-mcp-server",
+  "license": "Apache-2.0",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 4800,
+  "tags": ["kubernetes", "k8s", "devops", "cloud", "containers", "pods", "infrastructure"],
+  "icon": "box",
+  "hosting": "hybrid",
+  "envVars": [
+    {
+      "name": "KUBECONFIG",
+      "required": false,
+      "description": "Path to kubeconfig file (defaults to ~/.kube/config)",
+      "placeholder": "~/.kube/config"
+    }
+  ],
+  "tools": [
+    { "name": "k8s_list_pods", "description": "List pods in a specific namespace with status and restart counts." },
+    { "name": "k8s_get_logs", "description": "Fetch container logs for a pod." },
+    { "name": "k8s_describe_resource", "description": "Describe pod, deployment, or service with detailed events." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "k8s-mcp-server"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "k8s-mcp-server"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "k8s-mcp-server"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Working `kubectl` and valid kubeconfig context"],
+    "installSteps": [
+      {
+        "title": "Configure MCP",
+        "description": "Ensure your active kubeconfig context points to the desired cluster."
+      }
+    ]
+  },
+  "aihostBridgeSupported": false,
+  "createdAt": "2024-12-28T00:00:00Z",
+  "updatedAt": "2026-02-10T00:00:00Z"
+}

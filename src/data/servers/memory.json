@@ -1,0 +1,60 @@
+{
+  "id": "memory",
+  "name": "Knowledge Graph Memory MCP",
+  "slug": "memory",
+  "shortDescription": "Persistent long-term memory graph for AI assistants using entities, relationships, observations, and semantic recall.",
+  "longDescription": "Provide AI models with persistent memory across multiple chat sessions. Entities, nodes, observations, and relations are stored in a local knowledge graph, allowing assistants to recall user preferences, project context, and past decisions.",
+  "category": "AI & Machine Learning",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Model Context Protocol"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 14200,
+  "tags": ["memory", "knowledge-graph", "long-term-memory", "ai", "personalization", "entities", "state"],
+  "icon": "brain",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    { "name": "create_entities", "description": "Create multiple new entities in the knowledge graph." },
+    { "name": "create_relations", "description": "Create relational edges between entities in the graph." },
+    { "name": "add_observations", "description": "Add factual observations to existing entities." },
+    { "name": "read_graph", "description": "Read the entire knowledge graph structure." },
+    { "name": "search_nodes", "description": "Search for nodes and entities matching query keywords." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Configure Memory Server",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"memory\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-memory\"]\n    }\n  }\n}"
+      }
+    ]
+  },
+  "aihostBridgeSupported": false,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-02-10T00:00:00Z"
+}

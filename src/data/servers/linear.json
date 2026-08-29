@@ -1,0 +1,71 @@
+{
+  "id": "linear",
+  "name": "Linear Project Management MCP",
+  "slug": "linear",
+  "shortDescription": "Create, assign, update, and search issues, projects, cycles, and roadmaps in Linear workspace.",
+  "longDescription": "Streamline sprint tracking and issue creation directly from developer discussions. Search issues, update statuses, attach links, and create new engineering tasks in Linear.",
+  "category": "Communication & Productivity",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Linear Community"
+  },
+  "company": "Linear",
+  "author": "jerhadf",
+  "repositoryUrl": "https://github.com/jerhadf/linear-mcp-server",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 4700,
+  "tags": ["linear", "project-management", "tickets", "issues", "sprint", "agile"],
+  "icon": "check-square",
+  "hosting": "cloud",
+  "envVars": [
+    {
+      "name": "LINEAR_API_KEY",
+      "required": true,
+      "description": "Linear Personal API Key (lin_api_...)",
+      "placeholder": "lin_api_xxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "tools": [
+    { "name": "linear_create_issue", "description": "Create a new issue with title, description, team, and assignee." },
+    { "name": "linear_search_issues", "description": "Search Linear issues by query or filter by status." },
+    { "name": "linear_update_issue", "description": "Update state, priority, or details of an existing issue." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "linear-mcp-server"],
+      "env": {
+        "LINEAR_API_KEY": "YOUR_LINEAR_API_KEY"
+      }
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "linear-mcp-server"],
+      "env": {
+        "LINEAR_API_KEY": "YOUR_LINEAR_API_KEY"
+      }
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "linear-mcp-server"],
+      "env": {
+        "LINEAR_API_KEY": "YOUR_LINEAR_API_KEY"
+      }
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Linear API key", "Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Configure Linear API Key",
+        "description": "Generate key at linear.app/settings/api and add to client config."
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-12-05T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "fetch",
+  "name": "Web Fetch & HTML-to-Markdown MCP",
+  "slug": "fetch",
+  "shortDescription": "Fetch web pages, clean HTML, extract readable Markdown content, and parse API endpoints.",
+  "longDescription": "Equip AI assistants to retrieve any publicly accessible URL, automatically convert HTML content to clean structured Markdown, preserve headers, tables, code blocks, and bypass boilerplate headers/footers.",
+  "category": "Web & Scraping",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Anthropic Model Context Protocol"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "featured": true,
+  "stars": 7500,
+  "tags": ["fetch", "http", "markdown", "web", "html", "parser", "scraping"],
+  "icon": "globe",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    {
+      "name": "fetch",
+      "description": "Fetch a web page and convert its HTML content to clean Markdown.",
+      "parameters": [
+        { "name": "url", "type": "string", "required": true, "description": "URL to fetch" },
+        { "name": "max_length", "type": "number", "required": false, "description": "Max character length" }
+      ]
+    }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Node.js 18+"],
+    "installSteps": [
+      {
+        "title": "Install and Configure",
+        "language": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"fetch\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-fetch\"]\n    }\n  }\n}"
+      }
+    ]
+  },
+  "aihostBridgeSupported": true,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-02-05T00:00:00Z"
+}

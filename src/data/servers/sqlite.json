@@ -1,0 +1,57 @@
+{
+  "id": "sqlite",
+  "name": "SQLite MCP Server",
+  "slug": "sqlite",
+  "shortDescription": "Query, inspect, and analyze local SQLite databases, .db/.sqlite files with schema reflection and SQL operations.",
+  "longDescription": "Allow AI assistants to open and inspect local SQLite database files, execute queries, create tables, run analytical aggregates, and auto-generate schema diagrams.",
+  "category": "Databases & SQL",
+  "demography": {
+    "region": "Global",
+    "country": "United States",
+    "origin": "Model Context Protocol"
+  },
+  "company": "Model Context Protocol",
+  "author": "modelcontextprotocol",
+  "authorUrl": "https://github.com/modelcontextprotocol",
+  "repositoryUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite",
+  "license": "MIT",
+  "transport": ["stdio"],
+  "verified": true,
+  "stars": 6100,
+  "tags": ["sqlite", "sql", "database", "embedded", "local-database", "data"],
+  "icon": "database",
+  "hosting": "local",
+  "envVars": [],
+  "tools": [
+    { "name": "read_query", "description": "Execute a SELECT query against the SQLite database." },
+    { "name": "write_query", "description": "Execute INSERT, UPDATE, or DELETE operations." },
+    { "name": "list_tables", "description": "List all tables in the SQLite database." },
+    { "name": "describe_table", "description": "Get table schema definition and column constraints." }
+  ],
+  "installConfigs": {
+    "claude": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/database.db"]
+    },
+    "cursor": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/database.db"]
+    },
+    "antigravity": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/database.db"]
+    }
+  },
+  "quickstart": {
+    "prerequisites": ["Node.js 18+", "Existing SQLite database file"],
+    "installSteps": [
+      {
+        "title": "Configure Path to Database",
+        "description": "Provide the `--db-path` argument pointing to your `.db` file."
+      }
+    ]
+  },
+  "aihostBridgeSupported": false,
+  "createdAt": "2024-11-25T00:00:00Z",
+  "updatedAt": "2026-01-05T00:00:00Z"
+}
