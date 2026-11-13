@@ -1,0 +1,84 @@
+{
+    "id": "easi-run",
+    "name": "easi.run",
+    "slug": "easi-run",
+    "shortDescription": "Self-hosted Chrome for external AI agents via MCP/REST, with live viewing and human takeover.",
+    "longDescription": "Isolated real Chrome sessions for external AI agents via MCP and REST, with encrypted profiles, live viewing, human takeover for logins, 2FA and approvals, file transfers, downloads, recordings and audio. The connected agent/model supplies reasoning. Free AGPL-3.0-only software; bring your own Linux x86-64 server with systemd and rootful Docker Engine 28+, plus your agent/model, with hosting and model costs separate. This stdio configuration connects to an already installed, running easi.run stack; it is not an installer. Remote Streamable HTTP uses your own authenticated /mcp endpoint. No shared public endpoint or npm package. Docs: https://docs.easi.run Demo: https://easi.run/demo . Submitted by creator Juliano Gouveia; listing prepared with AI assistance.",
+    "category": "Developer Tools",
+    "demography": {
+          "region": "Global",
+          "country": "Brazil",
+          "origin": "Juliano Gouveia"
+    },
+    "company": "Juliano Gouveia",
+    "author": "julianosig",
+    "authorUrl": "https://github.com/julianosig",
+    "repositoryUrl": "https://github.com/julianosig/easi.run",
+    "homepageUrl": "https://easi.run",
+    "license": "AGPL-3.0-only",
+    "transport": [
+          "stdio"
+    ],
+    "verified": false,
+    "featured": false,
+    "tags": [
+          "browser",
+          "automation",
+          "mcp",
+          "self-hosted",
+          "human-in-the-loop"
+    ],
+    "logoUrl": "https://easi.run/apple-touch-icon.png",
+    "hosting": "local",
+    "envVars": [],
+    "tools": [],
+    "installConfigs": {
+          "claude": {
+                  "command": "docker",
+                  "args": [
+                            "exec",
+                            "-i",
+                            "easi-run-admin-1",
+                            "admin",
+                            "mcp"
+                  ]
+          },
+          "cursor": {
+                  "command": "docker",
+                  "args": [
+                            "exec",
+                            "-i",
+                            "easi-run-admin-1",
+                            "admin",
+                            "mcp"
+                  ]
+          },
+          "antigravity": {
+                  "command": "docker",
+                  "args": [
+                            "exec",
+                            "-i",
+                            "easi-run-admin-1",
+                            "admin",
+                            "mcp"
+                  ]
+          }
+    },
+    "quickstart": {
+          "prerequisites": [
+                  "Your own Linux x86-64 server with systemd and rootful Docker Engine 28+",
+                  "Install the official easi.run stack first: https://docs.easi.run",
+                  "Your own compatible MCP agent/model; hosting and model costs are separate"
+          ],
+          "installSteps": [
+                  {
+                            "title": "Deploy easi.run on your server",
+                            "description": "Follow https://docs.easi.run to deploy the official stack; do not run the MCP command before the admin container is available."
+                  },
+                  {
+                            "title": "Configure your MCP client",
+                            "description": "Use the Docker stdio configuration on the machine running the easi.run stack. Replace container name only if your deployment uses a different admin container."
+                  }
+          ]
+    }
+}
